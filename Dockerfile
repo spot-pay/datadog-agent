@@ -1,4 +1,7 @@
-FROM datadog/agent:7
+# 7.84.6 is the first release whose embedded CA bundle, certifi and Python
+# reject the compromised eMudhra intermediates. Render only rebuilds on a commit,
+# so a floating tag stays on whatever version the last build pulled.
+FROM datadog/agent:7.84.6@sha256:4aa71f1f624e36ed4d04568e4ad3f323af14426db07d2f9ed98869f6d0bdbbd3
 
 # disable autoconfigured checks; DD container checks
 # do not work as-is on Render since there's no access
